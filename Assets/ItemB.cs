@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemB : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
 
     RectTransform rect;
+    Estudiante estudiante;
+    public Text text_nombre;
+    public Text text_nota;
 
     void Awake()
     {
@@ -33,6 +37,15 @@ public class ItemB : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEnd
 
     }
 
+
+
+
+    public void setEstudiante(Estudiante e)
+    {
+        estudiante = e;
+        text_nombre.text = e.nombre + " " + e.apellido;
+        text_nota.text = "" + e.nota;
+    }
 
 
     // Start is called before the first frame update
