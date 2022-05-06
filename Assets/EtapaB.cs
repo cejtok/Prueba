@@ -28,7 +28,7 @@ public class EtapaB : MonoBehaviour
     float x3;
 
 
-    bool readJSON()
+    void readJSON()
     {
         date = File.GetLastWriteTime(jsonpath);
         print("lectura de json");
@@ -59,12 +59,18 @@ public class EtapaB : MonoBehaviour
                 item.GetComponent<ItemB>().setEstudiante(e);
                 i++;
             }
-            return true;
+            return;
+        }
+        catch (IOException exception)
+        {
+            print(exception.ToString());
+            print("iterar proceso de lectura");
+            readJSON();
         }
         catch (Exception exception)
         {
-
             print(exception.ToString());
+            print("fichero JSON erroneo");
             estudiantes = new Estudiantes();
             estudiantes.datos.Clear();
 
@@ -76,8 +82,9 @@ public class EtapaB : MonoBehaviour
                 }
             }
 
-            return false;
+            return;
         }
+        
 
     }
 
@@ -113,7 +120,7 @@ public class EtapaB : MonoBehaviour
     }
 
 
-    public void ButtonAlerta()
+    public void EsconderAlerta()
     {
         Contenedor.SetActive(true);
         alertaB.SetActive(false);

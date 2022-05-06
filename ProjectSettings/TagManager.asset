@@ -8,6 +8,7 @@ TagManager:
   - col1
   - col2
   - Neutro
+  - ItemA
   layers:
   - Default
   - TransparentFX
