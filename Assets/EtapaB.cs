@@ -16,6 +16,7 @@ public class EtapaB : MonoBehaviour
     public GameObject prefabItemB;
     public GameObject alertaB;
     public GameObject TextAlertaB;
+    public GameObject ScrollRectB;
 
 
     string jsonpath;
@@ -87,12 +88,14 @@ public class EtapaB : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        jsonpath = Application.dataPath + "\\StreamingAssets\\nombreJson.json";
+        jsonpath = Application.streamingAssetsPath + "/nombreJson.json";//
     }
 
     // Update is called once per frame
     void Update()
     {
+        ScrollRectB.GetComponent<ScrollRect>().verticalScrollbar.value += Input.GetAxis("Mouse ScrollWheel") * 1.0f;
+
         //print("...");
         if (DateTime.Compare(date, File.GetLastWriteTime(jsonpath)) != 0)
         {
