@@ -103,18 +103,19 @@ public class ItemB : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEnd
                         break;
                     }
                 }
-                GameObject o = GameObject.Find("ScrollRectB");
-                Text textalerta = GameObject.Find("TextAlertaB").GetComponent<Text>();
-                o.SetActive(false);
-
+                string msg = "";
                 if (check == true)
                 {
-                    textalerta.text = "PERFECTO:\nLos estudiantes estan ubicados correctamente";
+                    msg = "PERFECTO:\nLos estudiantes estan ubicados correctamente";
                 }
                 else
                 {
-                    textalerta.text = "FALLASTE:\nLos estudiantes estan ubicados incorrectamente";
+                    msg = "FALLASTE:\nLos estudiantes estan ubicados incorrectamente";
                 }
+                GameObject PanelEtapaB = GameObject.Find("PanelEtapaB");
+                PanelEtapaB.SendMessage("Alerta", msg);             
+
+                
             }
 
         }

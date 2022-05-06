@@ -91,9 +91,11 @@ public class EtapaB : MonoBehaviour
         {
             readJSON();
         }
+    }
 
-        
 
-
+    public void Alerta(string msg)
+    {
+        print(msg);
     }
 }
