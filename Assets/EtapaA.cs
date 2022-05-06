@@ -15,6 +15,7 @@ public class EtapaA : MonoBehaviour
     public GameObject prefabItemA;
     public GameObject Contenedor;
     public GameObject alertaA;
+    public GameObject PanelEtapaB;
 
     DateTime date;
 
@@ -22,16 +23,23 @@ public class EtapaA : MonoBehaviour
 
     public void Verificar()
     {
-        
+        int i = 0;
         foreach (Transform child in Contenedor.transform)
         {
-            if(child.GetComponent<ItemA>().GetRevision() == false)
-            {
+            i++;
+            if (child.GetComponent<ItemA>().GetRevision() == false)
+            {               
                 Contenedor.SetActive(false);
                 alertaA.SetActive(true);
                 return;
             }
         }
+        if (i > 0)
+        {
+            gameObject.SetActive(false);
+            PanelEtapaB.SetActive(true);
+        }
+        
 
     }
 
@@ -103,7 +111,7 @@ public class EtapaA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!date.Equals(File.GetLastWriteTime(jsonpath)))
+        if (DateTime.Compare(date, File.GetLastWriteTime(jsonpath)) != 0)
         {
             readJSON();
         }

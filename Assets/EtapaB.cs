@@ -3,6 +3,9 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class EtapaB : MonoBehaviour
 {
@@ -12,6 +15,8 @@ public class EtapaB : MonoBehaviour
     public GameObject Contenedor;
     public GameObject prefabItemB;
     public GameObject alertaB;
+    public GameObject TextAlertaB;
+
 
     string jsonpath;
     Estudiantes estudiantes;
@@ -25,6 +30,7 @@ public class EtapaB : MonoBehaviour
     bool readJSON()
     {
         date = File.GetLastWriteTime(jsonpath);
+        print("lectura de json");
 
         try
         {
@@ -87,7 +93,8 @@ public class EtapaB : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!date.Equals(File.GetLastWriteTime(jsonpath)))
+        //print("...");
+        if (DateTime.Compare(date, File.GetLastWriteTime(jsonpath)) != 0)
         {
             readJSON();
         }
@@ -97,5 +104,17 @@ public class EtapaB : MonoBehaviour
     public void Alerta(string msg)
     {
         print(msg);
+        Contenedor.SetActive(false);
+        alertaB.SetActive(true);
+        TextAlertaB.GetComponent<Text>().text = msg;
     }
+
+
+    public void ButtonAlerta()
+    {
+        Contenedor.SetActive(true);
+        alertaB.SetActive(false);
+    }
+
+
 }

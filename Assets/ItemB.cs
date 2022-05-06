@@ -12,10 +12,6 @@ public class ItemB : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEnd
     public Text text_nombre;
     public Text text_nota;
 
-    public GameObject Alerta;
-    public Text text_alerta;
-
-
     int col = 0;
     Vector2 pos;
 
