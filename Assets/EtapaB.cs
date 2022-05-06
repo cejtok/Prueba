@@ -91,5 +91,9 @@ public class EtapaB : MonoBehaviour
         {
             readJSON();
         }
+
+        
+
+
     }
 }
